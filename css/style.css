@@ -149,6 +149,9 @@ article:hover {
 .dropdown:hover .dropdown-conteudo {
     display: block;
 }
+.dropdown:focus-within .dropdown-conteudo {
+    display: block;
+}
 button {
     background-color: var(--cor-primaria);
     color: var(--cor-superficie);
@@ -250,4 +253,43 @@ input:required:invalid:not(:placeholder-shown) {
     top: 10px;
     outline: 3px solid #005fcc;
     outline-offset: 2px;
+}
+/* Organização do formulário */
+fieldset {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding: 20px;
+    min-width: 0;
+}
+/* Campos do formulário */
+fieldset label {
+    display: block;
+    width: 100%;
+    margin-top: 8px;
+    font-weight: 600;
+}
+
+fieldset input {
+    width: 100%;
+    max-width: 450px;
+    box-sizing: border-box;
+}
+/* Centralização do formulário */
+main > form {
+    width: 100%;
+    max-width: 700px;
+    margin: 30px auto;
+    box-sizing: border-box;
+}
+@media (max-width: 768px) {
+    .menu-links.ativo .dropdown-conteudo {
+        display: flex;
+        flex-direction: column;
+        position: static;
+        min-width: 0;
+        padding: 8px;
+    }
 }

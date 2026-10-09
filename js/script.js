@@ -4,7 +4,17 @@ const botaoMenu = document.querySelector('.menu-toggle');
 const menuLinks = document.querySelector('.menu-links');
 
 botaoMenu.addEventListener('click', function () {
-    menuLinks.classList.toggle('ativo');
+    const menuAberto = menuLinks.classList.toggle('ativo');
+
+    botaoMenu.setAttribute(
+        'aria-expanded',
+        String(menuAberto)
+    );
+
+    botaoMenu.setAttribute(
+        'aria-label',
+        menuAberto ? 'Fechar menu' : 'Abrir menu'
+    );
 });
 const botaoToast = document.querySelector('#mostrar-toast');
 const toast = document.querySelector('#toast');
@@ -54,9 +64,13 @@ const listaProjetos = projetos.map(function (projeto) {
 }
 linksRotas.forEach(function (link) {
     link.addEventListener('click', function (e) {
+        if (!conteudoPrincipal) {
+            return;
+        }
+
         e.preventDefault();
 
         const rota = this.getAttribute('data-rota');
         navegarPara(rota);
     });
-}); 
+});
